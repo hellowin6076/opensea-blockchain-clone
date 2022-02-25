@@ -2,6 +2,9 @@ import Link from 'next/link'
 import Image from 'next/image'
 import React from 'react'
 import opentseaLogo from '../assets/opensea.png'
+import { AiOutlineSearch } from 'react-icons/ai'
+import { CgProfile } from 'react-icons/cg'
+import { MdOutlineAccountBalanceWallet } from 'react-icons/md'
 
 const style = {
   wrapper: `bg-[#04111d] w-screen px-[1.2rem] py-[0.8rem] flex `,
@@ -21,8 +24,33 @@ const Header = () => {
       <Link href={'/'}>
         <div className={style.logoContainer}>
           <Image src={opentseaLogo} height={40} width={40} />
+          <div className={style.logoText}>Opensea</div>
         </div>
       </Link>
+      <div className={style.searchBar}>
+        <div className={style.searchIcon}>
+          <AiOutlineSearch />
+        </div>
+        <input
+          className={style.searchInput}
+          placeholder="Search items,
+        collections and accounts"
+        />
+      </div>
+      <div className={style.headerItems}>
+        <Link href='/collections/0x9Af44C0BD5603AE110Aa7A4727E98BEc855A8Cd3'>
+          <div className={style.headerItem}> Collections </div>
+        </Link>
+        <div className={style.headerItem}> Stats </div>
+        <div className={style.headerItem}> Resources </div>
+        <div className={style.headerItem}> Create </div>
+        <div className={style.headerIcon}>
+          <CgProfile />
+        </div>
+        <div className={style.headerIcon}>
+          <MdOutlineAccountBalanceWallet />
+        </div>
+      </div>
     </div>
   )
 }
