@@ -49,6 +49,7 @@ const Collection = () => {
       provider.getSigner(),
       'https://eth-rinkeby.alchemyapi.io/v2/JRjDV0zGF56jGfnRy_0OTkm977KaaDG0'
     )
+
     return sdk.getNFTModule(collectionId)
   }, [provider])
 
@@ -58,6 +59,7 @@ const Collection = () => {
     ;(async () => {
       const nfts = await nftModule.getAll()
       setNfts(nfts)
+      console.log(nfts)
     })()
   }, [nftModule])
 
@@ -93,8 +95,6 @@ const Collection = () => {
      description
    }`
     const collectionData = await sanityClient.fetch(query)
-
-    console.log(collectionData)
 
     // the query returns 1 object inside of an array
     await setCollection(collectionData[0])
@@ -201,6 +201,16 @@ const Collection = () => {
         <div className={style.midRow}>
           <div className={style.description}>{collection?.description}</div>
         </div>
+      </div>
+      <div className="flex flex-wrap ">
+        {nfts.map((nftItem, id) => (
+          <NFTCard
+            key={id}
+            nftItem={nftItem}
+            title={collection?.title}
+            listings={listings}
+          />
+        ))}
       </div>
     </div>
   )
