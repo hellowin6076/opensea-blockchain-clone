@@ -59,7 +59,6 @@ const Collection = () => {
     ;(async () => {
       const nfts = await nftModule.getAll()
       setNfts(nfts)
-      console.log(nfts)
     })()
   }, [nftModule])
 
